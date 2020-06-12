@@ -21,3 +21,6 @@ OALLexer.tokens
 /test/plugin/dist
 /test/plugin/workspace
 node_modules/
+mesh-buffer/
+trace-buffer/
+apm/skywalking-ui/node/node.exe
