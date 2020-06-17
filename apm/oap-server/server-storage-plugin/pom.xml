@@ -28,6 +28,7 @@
     <artifactId>server-storage-plugin</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>storage-boot-plugin</module>
         <module>storage-jdbc-hikaricp-plugin</module>
         <module>storage-elasticsearch-plugin</module>
         <module>storage-elasticsearch7-plugin</module>

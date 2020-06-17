@@ -18,12 +18,23 @@
 
 package org.apache.skywalking.oap.server.starter;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 /**
  * OAP starter specific for the ES7 storage. This includes the same code of OAPServerStartUp in the `server-starter`
  * module.
  */
-public class OAPServerStartUp {
-    public static void main(String[] args) {
-        OAPServerBootstrap.start();
+@SpringBootApplication
+public class OAPServerStartUp extends SpringBootServletInitializer {
+    public static void main(String[] args) throws IOException {
+        new SpringApplicationBuilder(OAPServerStartUp.class)
+                .properties("spring.config.location=classpath:/app.yml").run(args);
     }
 }

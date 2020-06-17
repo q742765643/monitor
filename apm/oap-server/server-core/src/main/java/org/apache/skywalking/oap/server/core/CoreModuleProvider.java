@@ -93,6 +93,7 @@ import org.apache.skywalking.oap.server.library.server.ServerException;
 import org.apache.skywalking.oap.server.library.server.grpc.GRPCServer;
 import org.apache.skywalking.oap.server.library.server.jetty.JettyServer;
 import org.apache.skywalking.oap.server.telemetry.TelemetryModule;
+import org.eclipse.jetty.servlet.ServletContextHandler;
 
 /**
  * Core module provider includes the recommended and default implementations of {@link CoreModule#services()}. All
@@ -113,6 +114,7 @@ public class CoreModuleProvider extends ModuleProvider {
     private final SourceReceiverImpl receiver;
     private OALEngine oalEngine;
     private ApdexThresholdConfig apdexThresholdConfig;
+    public static ServletContextHandler CONTEXTHANDLER;
 
     public CoreModuleProvider() {
         super();
@@ -191,7 +193,7 @@ public class CoreModuleProvider extends ModuleProvider {
         jettyServer = new JettyServer(
             moduleConfig.getRestHost(), moduleConfig.getRestPort(), moduleConfig.getRestContextPath(), moduleConfig
             .getJettySelectors());
-        jettyServer.initialize();
+        jettyServer.initialize(CONTEXTHANDLER);
 
         this.registerServiceImplementation(ConfigService.class, new ConfigService(moduleConfig));
         this.registerServiceImplementation(
@@ -308,7 +310,7 @@ public class CoreModuleProvider extends ModuleProvider {
     public void notifyAfterCompleted() throws ModuleStartException {
         try {
             grpcServer.start();
-            jettyServer.start();
+            //jettyServer.start();
         } catch (ServerException e) {
             throw new ModuleStartException(e.getMessage(), e);
         }
