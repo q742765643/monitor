@@ -61,7 +61,7 @@
         <!-- 为集成springboot jetty版本进行统一-->
         <!-- <jetty.version>9.4.2.v20170220</jetty.version>-->
         <jetty.version>9.4.9.v20180320</jetty.version>
-        <h2.version>1.4.196</h2.version>
+        <h2.version>2.1.210</h2.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <commons-io.version>2.6</commons-io.version>
         <elasticsearch.version>6.3.2</elasticsearch.version>
